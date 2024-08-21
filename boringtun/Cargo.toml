@@ -30,8 +30,11 @@ blake2 = "0.10"
 hmac = "0.12"
 jni = { version = "0.21", optional = true }
 
-[target.'cfg(target_os="macos")'.dependencies]
-nix = "0.24.1"
+[target.'cfg(unix)'.dependencies]
+nix = { version = "0.27", default-features = false, features = [
+    "time",
+    "user",
+] }
 
 [dev-dependencies]
 tracing-subscriber = "0.3"
